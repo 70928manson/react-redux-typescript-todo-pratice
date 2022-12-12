@@ -1,6 +1,10 @@
 import './App.css';
 import styled from 'styled-components'
 
+import { useAppSelector } from './hooks';
+import { log } from 'console';
+import todo from './slices/todo';
+
 const Wrapper = styled.div`
   width: 700px;
   margin: 0 auto;
@@ -49,6 +53,9 @@ const Item = styled.div`
 
 
 function App() {
+  //store建立好後，透過selector讓UI知道state的狀態
+  const todoReducer = useAppSelector(state => state.todoReducer);
+  const todoList = todoReducer.todoList
 
   return (
     <Wrapper>
@@ -61,6 +68,16 @@ function App() {
         Record Timestamp
       </SubmitBtn>
       <Title>List</Title>
+      {
+        todoList.map((data, index) => {
+          return (
+            <Item key={data}>
+              <b>{index + 1}</b>
+              {data}
+            </Item>
+          )
+        })
+      }
     </Wrapper>
   );
 }
