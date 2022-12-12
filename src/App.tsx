@@ -2,6 +2,8 @@ import './App.css';
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
+  width: 700px;
+  margin: 0 auto;
   padding: 1.5rem;
 `
 
