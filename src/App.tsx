@@ -1,9 +1,8 @@
 import './App.css';
 import styled from 'styled-components'
 
-import { useAppSelector } from './hooks';
-import { log } from 'console';
-import todo from './slices/todo';
+import { useAppSelector, useAppDispatch } from './hooks';
+import { addTimestamp } from './slices/todo';
 
 const Wrapper = styled.div`
   width: 700px;
@@ -53,9 +52,13 @@ const Item = styled.div`
 
 
 function App() {
+  //store包含reducer，reducer讓state透過store渲染至UI
   //store建立好後，透過selector讓UI知道state的狀態
+  //Provider 連結狀態與UI
   const todoReducer = useAppSelector(state => state.todoReducer);
-  const todoList = todoReducer.todoList
+  const todoList = todoReducer.todoList;
+
+  const dispatch = useAppDispatch();
 
   return (
     <Wrapper>
@@ -64,7 +67,9 @@ function App() {
       <SubmitBtn>
         Submit
       </SubmitBtn>
-      <SubmitBtn>
+      <SubmitBtn onClick={() => {
+        dispatch(addTimestamp());  //需要slice的action當參數
+      }}>
         Record Timestamp
       </SubmitBtn>
       <Title>List</Title>

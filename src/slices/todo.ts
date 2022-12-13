@@ -5,7 +5,7 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-    todoList: []  //初始值
+    todoList: ["todo..."]  //初始值
 }
 
 //redux官網
@@ -19,13 +19,13 @@ export const todoSlice = createSlice({
         addTodo: (state, action) => {
             state.todoList.push(action.payload)
         },
-        addTimestep: (state) => {
+        addTimestamp: (state) => {
             state.todoList.push(Date.now().toString())
         }
     }
   })
 
-  export const { addTodo, addTimestep } = todoSlice.actions  //定義todoSlice的action給UI用
+  export const { addTodo, addTimestamp } = todoSlice.actions  //定義todoSlice的action給UI用
 
   export default todoSlice.reducer
   
