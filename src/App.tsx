@@ -2,7 +2,9 @@ import './App.css';
 import styled from 'styled-components'
 
 import { useAppSelector, useAppDispatch } from './hooks';
-import { addTimestamp } from './slices/todo';
+import { addTodo, addTimestamp } from './slices/todo';
+
+import { useState } from 'react';
 
 const Wrapper = styled.div`
   width: 700px;
@@ -58,13 +60,24 @@ function App() {
   const todoReducer = useAppSelector(state => state.todoReducer);
   const todoList = todoReducer.todoList;
 
+  const [text, setText] = useState("")
+
   const dispatch = useAppDispatch();
 
   return (
     <Wrapper>
       <Title>TODO LIST</Title>
-      <NoteInput type="text" />
-      <SubmitBtn>
+      <NoteInput type="text" value={text} onChange={(e:React.ChangeEvent<HTMLInputElement>) => {
+        setText(e.target.value);
+      }}/>
+      <SubmitBtn onClick={() => {
+        if (text === "") {
+          alert("請輸入內容");
+          return;
+        }
+        dispatch(addTodo(text));  //payload
+        setText("");
+      }}>
         Submit
       </SubmitBtn>
       <SubmitBtn onClick={() => {
