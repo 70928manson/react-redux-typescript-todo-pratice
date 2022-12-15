@@ -64,6 +64,8 @@ function App() {
 
   const dispatch = useAppDispatch();
 
+  //slice - store(export ts類型) - reducer -action - dispatch - 橋梁provider - hooks(ts定義)
+
   return (
     <Wrapper>
       <Title>TODO LIST</Title>
