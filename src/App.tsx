@@ -6,6 +6,9 @@ import { addTodo, addTimestamp } from './slices/todo';
 
 import { useState } from 'react';
 
+import { useGetTodoListQuery } from './services/todoApi'
+import { log } from 'console';
+
 const Wrapper = styled.div`
   width: 700px;
   margin: 0 auto;
@@ -64,6 +67,15 @@ function App() {
 
   const dispatch = useAppDispatch();
 
+  const { data, error, isLoading } = useGetTodoListQuery('1');
+  console.log('aaa', data, error, isLoading);
+  console.log(
+    'Nothing here %cHi Cat %cHey Bear',  // Console Message
+    'color: blue', 'color: red' // CSS Style
+  );
+  
+  const { userId = 'N/A', title = 'N/A' } = data || {};
+
   //slice - store(export ts類型) - reducer -action - dispatch - 橋梁provider - hooks(ts定義)
 
   return (
@@ -97,6 +109,16 @@ function App() {
             </Item>
           )
         })
+      }
+      <Title>List 2</Title>
+      {isLoading && <p>Loading...</p>}
+      {
+        !isLoading && (
+          <div>
+            <p>USER ID: {userId}</p>
+            <p>USER TITLE: {title}</p>
+          </div>
+        )
       }
     </Wrapper>
   );
