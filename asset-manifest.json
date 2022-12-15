@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-redux-typescript-todo-pratice/static/css/main.e6c13ad2.css",
+    "main.js": "/react-redux-typescript-todo-pratice/static/js/main.42de75e4.js",
+    "index.html": "/react-redux-typescript-todo-pratice/index.html",
+    "main.e6c13ad2.css.map": "/react-redux-typescript-todo-pratice/static/css/main.e6c13ad2.css.map",
+    "main.42de75e4.js.map": "/react-redux-typescript-todo-pratice/static/js/main.42de75e4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.42de75e4.js"
+  ]
+}
