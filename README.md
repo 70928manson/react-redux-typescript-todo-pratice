@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+參考Redux官網練習React + Redux + TypeScript做成的簡易todo list
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
